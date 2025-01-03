@@ -1,0 +1,46 @@
+import pandas as pd
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+
+# Load data from Google Drive in Colab
+from google.colab import drive
+drive.mount('/content/drive')
+
+data_path = '/content/drive/My Drive/library management/example_data.csv'
+data = pd.read_csv(data_path)
+
+# Define preprocessing steps
+# Numerical features will be standardized
+numerical_features = ['num_feature_1', 'num_feature_2']
+numerical_transformer = StandardScaler()
+
+# Categorical features will be one-hot encoded
+categorical_features = ['cat_feature_1', 'cat_feature_2']
+categorical_transformer = OneHotEncoder()
+
+# Combine preprocessors in a column transformer
+preprocessor = ColumnTransformer(
+    transformers=[
+        ('num', numerical_transformer, numerical_features),
+        ('cat', categorical_transformer, categorical_features)
+    ]
+)
+
+# Create a preprocessing and transformation pipeline
+pipeline = Pipeline(steps=[
+    ('preprocessor', preprocessor)
+])
+
+# Apply the pipeline to transform the data
+transformed_data = pipeline.fit_transform(data)
+
+# Convert the transformed data back to a DataFrame
+transformed_df = pd.DataFrame(
+    transformed_data,
+    columns=(numerical_features + list(pipeline.named_steps['preprocessor'].named_transformers_['cat'].get_feature_names_out()))
+)
+
+# Save the processed data to a new CSV file
+processed_data_path = '/content/drive/My Drive/library management/processed_data.csv'
+transformed_df.to_csv(processed_data_path, index=False)
