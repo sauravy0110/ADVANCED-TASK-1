@@ -1,3 +1,21 @@
+Name:Saurav Yadav Comapny: CODTECH IT SOLUTIONS ID:CT08DS590 Domain: Data Science Duration: 12Dec2024 - 12 Jan2025
+
+
+
+
+<img width="1280" alt="Screenshot 2025-01-03 at 6 29 25 PM" src="https://github.com/user-attachments/assets/7ecccc68-e6ee-4126-a189-fa5299128c35" />
+
+
+
+
+
+
+
+
+<img width="1280" alt="Screenshot 2025-01-03 at 6 29 31 PM" src="https://github.com/user-attachments/assets/1f36d830-8bf8-4283-8e14-dfd59b476c18" />
+
+
+
 Objective:
 The goal of this project is to build an automated data preprocessing pipeline that transforms raw data into a clean, standardized format suitable for machine learning models. The pipeline processes numerical and categorical data by applying standardization and one-hot encoding techniques to ensure consistency and readiness for model training.
 
